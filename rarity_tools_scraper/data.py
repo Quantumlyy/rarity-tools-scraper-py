@@ -17,7 +17,7 @@ class Prices:
 	startDate: Optional[int] = None
 
 
-def get_collection_prices(collection: str):
+def get_collection_prices(collection: str) -> Prices:
 	res = requests.get(BASE_COLLECTION_DATA_ENDPOINT_URL.format(endpoint="prices", collection=collection), headers={
 		"User-Agent": ua.random
 	})
