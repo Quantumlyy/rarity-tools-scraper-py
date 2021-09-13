@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="rarity-tools-scraper",
-    version="0.0.3",
+    version="0.0.4",
     url="https://github.com/quantumlyy/rarity-tools-scraper-py",
     author="Nejc Drobnič",
     author_email="yo@quantumly.dev",

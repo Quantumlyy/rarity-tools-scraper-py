@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, Union
 
 import requests
 from dataclasses_json import dataclass_json, CatchAll
@@ -12,7 +12,7 @@ ua = UserAgent()
 @dataclass_json
 @dataclass
 class Prices:
-	prices: Dict[str, Any]
+	prices: Dict[str, list[Union[list[int], float, str]]]
 	v: int
 	startDate: Optional[int] = None
 	unknown_things: CatchAll = None
