@@ -5,7 +5,7 @@ import requests
 from dataclasses_json import dataclass_json
 from fake_useragent import UserAgent
 
-BASE_COLLECTION_DATA_ENDPOINT_URL = "https://data.rarity.tools/{endpoint}/{collection}"
+BASE_DATA_ENDPOINT_URL = "https://data.rarity.tools/{endpoint}/{collection}"
 ua = UserAgent()
 
 
@@ -18,7 +18,7 @@ class Prices:
 
 
 def get_collection_prices(collection: str) -> Prices:
-	res = requests.get(BASE_COLLECTION_DATA_ENDPOINT_URL.format(endpoint="prices", collection=collection), headers={
+	res = requests.get(BASE_DATA_ENDPOINT_URL.format(endpoint="prices", collection=collection), headers={
 		"User-Agent": ua.random
 	})
 	json = res.json()
