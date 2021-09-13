@@ -3,9 +3,9 @@ from dataclasses import dataclass, field
 import requests
 from dataclasses_json import dataclass_json, config as dt_json_config, CatchAll
 from fake_useragent import UserAgent
-from typing import Tuple  # , Union, Dict
+from typing import Tuple, Any  # , Union, Dict
 
-BASE_PROJECTS_STATIC_ENDPOINT_URL = "https://data.rarity.tools/static/{endpoint}/{collection}.json"
+BASE_PROJECTS_STATIC_ENDPOINT_URL = "https://projects.rarity.tools/static/{endpoint}/{collection}.json"
 ua = UserAgent()
 
 
@@ -18,7 +18,8 @@ class Config:
 	notes: list[dict]
 	images: dict  # Dict[str, Union[bool, str, list[int]]]
 	rankings: dict  # Dict[str, Union[str, bool, list[dict]]]
-	prop_categories: list[Tuple[str, list[str]]] = field(metadata=dt_json_config(field_name="propCategories"))
+	# list[Tuple[str, list[str]]]
+	prop_categories: list[Any] = field(metadata=dt_json_config(field_name="propCategories"))
 
 	unknown_things: CatchAll = None
 
