@@ -1,8 +1,8 @@
 from dataclasses import dataclass
-from typing import Optional, Dict
+from typing import Optional, Dict, Any
 
 import requests
-from dataclasses_json import dataclass_json
+from dataclasses_json import dataclass_json, CatchAll
 from fake_useragent import UserAgent
 
 BASE_DATA_ENDPOINT_URL = "https://data.rarity.tools/{endpoint}/{collection}"
@@ -12,9 +12,10 @@ ua = UserAgent()
 @dataclass_json
 @dataclass
 class Prices:
-	prices: Dict[int, list]
+	prices: Dict[str, Any]
 	v: int
 	startDate: Optional[int] = None
+	unknown_things: CatchAll = None
 
 
 def get_collection_prices(collection: str) -> Prices:

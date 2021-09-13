@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import Optional, Dict
 
 import requests
-from dataclasses_json import dataclass_json
+from dataclasses_json import dataclass_json, CatchAll
 from fake_useragent import UserAgent
 
 COLLECTIONS_ENDPOINT_URL = "https://collections.rarity.tools/static/collections.json"
@@ -77,6 +77,8 @@ class Collection:
 class Collections:
 	collections: list[Collection]
 	projects: Projects
+
+	unknown_things: CatchAll = None
 
 
 def get_all_collections() -> Collections:

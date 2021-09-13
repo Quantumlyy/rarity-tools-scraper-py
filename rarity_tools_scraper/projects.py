@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 
 import requests
-from dataclasses_json import dataclass_json, config as dt_json_config
+from dataclasses_json import dataclass_json, config as dt_json_config, CatchAll
 from fake_useragent import UserAgent
 from typing import Tuple  # , Union, Dict
 
@@ -19,6 +19,8 @@ class Config:
 	images: dict  # Dict[str, Union[bool, str, list[int]]]
 	rankings: dict  # Dict[str, Union[str, bool, list[dict]]]
 	prop_categories: list[Tuple[str, list[str]]] = field(metadata=dt_json_config(field_name="propCategories"))
+
+	unknown_things: CatchAll = None
 
 
 def get_collection_config_static(collection: str):
