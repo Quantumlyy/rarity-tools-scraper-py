@@ -29,6 +29,11 @@ class Config:
 class BasePropDef:
 	name: str
 	type: str
+
+	is_match: Optional[bool] = field(metadata=dt_json_config(field_name="isMatch"), default=None)
+	matching_value: Optional[str] = field(metadata=dt_json_config(field_name="matchingValue"), default=None)
+
+	properties: Optional[list[str]] = None
 	pvs: Optional[list[list[Union[str, int]]]] = None
 
 	unknown_things: CatchAll = None
