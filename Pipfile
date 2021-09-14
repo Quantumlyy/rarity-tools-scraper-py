@@ -12,6 +12,7 @@ requests = "==2.26.0"
 fake-useragent = "==0.1.11"
 typing = "==3.7.4.3"
 dataclasses-json = "==0.5.5"
+marshmallow = "==3.13.0"
 
 [requires]
 python_version = "3.9"

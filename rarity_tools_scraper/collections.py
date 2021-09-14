@@ -1,9 +1,11 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from datetime import datetime
 from typing import Optional, Dict
 
 import requests
-from dataclasses_json import dataclass_json, CatchAll
+from dataclasses_json import dataclass_json, config as dt_json_config, CatchAll
 from fake_useragent import UserAgent
+from marshmallow.fields import DateTime
 
 COLLECTIONS_ENDPOINT_URL = "https://collections.rarity.tools/static/collections.json"
 ua = UserAgent()
@@ -13,14 +15,14 @@ ua = UserAgent()
 @dataclass
 class ProjectLookup:
 	name: str
-	addedOrder: Optional[int] = None
+	added_order: Optional[int] = field(metadata=dt_json_config(field_name="addedOrder"), default=None)
 	dynamic: Optional[int] = None
 	manual: Optional[bool] = None
 	contracts: Optional[list[str]] = None
 	cv: Optional[int] = None
-	itemName: Optional[str] = None
+	item_name: Optional[str] = field(metadata=dt_json_config(field_name="itemName"), default=None)
 	added: Optional[str] = None
-	customHeader: Optional[str] = None
+	custom_header: Optional[str] = field(metadata=dt_json_config(field_name="customHeader"), default=None)
 
 
 @dataclass_json
@@ -67,8 +69,11 @@ class Collection:
 	twitter_username: Optional[str] = None
 	instagram_username: Optional[str] = None
 
-	# TODO: convert to date time
-	created_date: Optional[str] = None
+	created_date: Optional[datetime] = field(metadata=dt_json_config(
+		encoder=datetime.isoformat,
+		decoder=datetime.fromisoformat,
+		mm_field=DateTime(format="iso")
+	), default=None)
 	stats: Optional[CollectionStats] = None
 
 
