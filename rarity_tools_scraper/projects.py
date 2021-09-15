@@ -61,6 +61,8 @@ class BasePropDef:
 	is_match: Optional[bool] = field(metadata=dt_json_config(field_name="isMatch"), default=None)
 	matching_value: Optional[str] = field(metadata=dt_json_config(field_name="matchingValue"), default=None)
 
+	is_combined: Optional[bool] = field(metadata=dt_json_config(field_name="isCombined"), default=None)
+
 	properties: Optional[list[str]] = None
 	pvs: Optional[list[list[Union[str, int]]]] = None
 

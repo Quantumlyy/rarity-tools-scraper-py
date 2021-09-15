@@ -7,7 +7,7 @@ long_description = (this_directory / "README.md").read_text()
 
 setup(
     name="rarity-tools-scraper",
-    version="0.0.10",
+    version="0.0.11",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/quantumlyy/rarity-tools-scraper-py",
